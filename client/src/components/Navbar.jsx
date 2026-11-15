@@ -13,7 +13,8 @@ import {
   Calendar,
   IdCard,
   BookOpen,
-  Palette
+  Palette,
+  Plus
 } from 'lucide-react';
 
 export default function Navbar({ 
@@ -66,53 +67,36 @@ export default function Navbar({
         <div className="flex items-center justify-between h-16">
           
           {/* Logo & University Identity */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             {currentUser?.role !== 'student' && activeTab === 'tickets' && (
               <button 
                 onClick={onToggleMobileSidebar}
-                className="md:hidden p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
+                className="md:hidden p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors shrink-0"
                 title="قائمة التذاكر"
               >
-                <Menu size={20} />
+                <Menu size={18} />
               </button>
             )}
 
             <div 
-              className="flex items-center gap-3 cursor-pointer select-none" 
+              className="flex items-center gap-2.5 sm:gap-3 cursor-pointer select-none shrink-0" 
               onClick={() => setActiveTab(currentUser?.role === 'student' ? 'home' : 'tickets')}
             >
-              <div className="w-10 h-10 rounded-xl bg-emerald-800 border border-emerald-700/60 flex items-center justify-center shadow-inner">
-                <GraduationCap className="text-white" size={22} />
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-800 border border-emerald-700/60 flex items-center justify-center shadow-inner shrink-0">
+                <GraduationCap className="text-white" size={20} />
               </div>
               <div className="leading-tight">
-                <h1 className="text-sm sm:text-base font-bold text-white tracking-normal">
+                <h1 className="text-xs sm:text-base font-bold text-white tracking-normal whitespace-nowrap">
                   جامعة الإمام الكاظم (ع)
                 </h1>
-                <p className="text-[11px] text-slate-400 font-normal hidden sm:block">
+                <p className="text-[10px] sm:text-[11px] text-slate-400 font-normal hidden sm:block">
                   منصة خدمة وتذاكر الطلبة
                 </p>
               </div>
             </div>
-
-            {/* Quick Theme Switcher Button - Right Side */}
-            <button
-              onClick={onOpenThemeModal}
-              className="flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-semibold text-slate-200 hover:text-white transition-all shadow-sm group mr-1"
-              title="تخصيص مظهر وثيم الموقع"
-            >
-              <Palette size={15} className="text-purple-400 group-hover:rotate-12 transition-transform" />
-              <span className="hidden sm:inline">مظهر الموقع</span>
-              <span className={`w-2 h-2 rounded-full ${
-                currentTheme === 'space-night' ? 'bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]' :
-                currentTheme === 'pure-light' ? 'bg-sky-400 shadow-[0_0_8px_rgba(56,189,248,0.8)]' :
-                currentTheme === 'velvet-black' ? 'bg-zinc-400' :
-                currentTheme === 'warm-paper' ? 'bg-amber-600 shadow-[0_0_8px_rgba(217,119,6,0.8)]' :
-                'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]'
-              }`} />
-            </button>
           </div>
 
-          {/* Center Navigation Tabs - Clean, Authentic & Removed "الأقسام والكادر" */}
+          {/* Center Navigation Tabs */}
           <nav className="hidden md:flex items-center gap-1 bg-slate-800/70 p-1 rounded-xl border border-slate-700/60">
             {currentUser?.role === 'student' && (
               <button
@@ -161,17 +145,34 @@ export default function Navbar({
           </nav>
 
           {/* User Profile & Actions */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            {/* Quick Theme Switcher Button */}
+            <button
+              onClick={onOpenThemeModal}
+              className="flex items-center gap-1.5 p-2 sm:px-3 sm:py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-xs font-semibold text-slate-200 hover:text-white transition-all shadow-sm group shrink-0"
+              title="تخصيص مظهر الموقع"
+            >
+              <Palette size={15} className="text-purple-400 group-hover:rotate-12 transition-transform" />
+              <span className="hidden md:inline">المظهر</span>
+              <span className={`w-2 h-2 rounded-full ${
+                currentTheme === 'space-night' ? 'bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]' :
+                currentTheme === 'pure-light' ? 'bg-sky-400 shadow-[0_0_8px_rgba(56,189,248,0.8)]' :
+                currentTheme === 'velvet-black' ? 'bg-zinc-400' :
+                currentTheme === 'warm-paper' ? 'bg-amber-600 shadow-[0_0_8px_rgba(217,119,6,0.8)]' :
+                'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]'
+              }`} />
+            </button>
+
             {currentUser ? (
               <div className="relative">
                 <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="flex items-center gap-2.5 bg-slate-800/80 hover:bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-xl transition-all"
+                  className="flex items-center gap-2 bg-slate-800/80 hover:bg-slate-800 border border-slate-700 p-1.5 sm:px-3 sm:py-1.5 rounded-xl transition-all"
                 >
                   <img 
                     src={currentUser.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${currentUser.name}`} 
                     alt={currentUser.name}
-                    className="w-8 h-8 rounded-full border border-slate-600 bg-slate-700 object-cover"
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-slate-600 bg-slate-700 object-cover shrink-0"
                   />
                   <div className="text-right hidden sm:block">
                     <div className="text-xs font-semibold text-white leading-tight">
@@ -183,7 +184,7 @@ export default function Navbar({
                         : (currentUser.title || 'كادر الكلية')}
                     </div>
                   </div>
-                  <ChevronDown size={14} className="text-slate-400 mr-1" />
+                  <ChevronDown size={14} className="text-slate-400" />
                 </button>
 
                 {/* Dropdown Menu */}
@@ -257,6 +258,73 @@ export default function Navbar({
 
         </div>
       </div>
+
+      {/* Mobile Bottom Navigation Bar for Smart Phones */}
+      {currentUser && (
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-900/95 backdrop-blur-md border-t border-slate-800 px-3 py-2 flex items-center justify-around shadow-2xl select-none">
+          {currentUser.role === 'student' && (
+            <button
+              onClick={() => setActiveTab('home')}
+              className={`flex flex-col items-center gap-1 py-1 px-3 rounded-xl transition-all ${
+                activeTab === 'home'
+                  ? 'text-emerald-400 font-bold'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Building2 size={18} />
+              <span className="text-[10px]">الرئيسية</span>
+            </button>
+          )}
+
+          <button
+            onClick={() => setActiveTab('tickets')}
+            className={`flex flex-col items-center gap-1 py-1 px-3 rounded-xl transition-all ${
+              activeTab === 'tickets'
+                ? 'text-emerald-400 font-bold'
+                : 'text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <MessageSquare size={18} />
+            <span className="text-[10px]">{currentUser.role === 'student' ? 'تذاكري' : 'التذاكر'}</span>
+          </button>
+
+          {/* Quick Action Center: فتح تذكرة جديدة */}
+          {currentUser.role === 'student' && (
+            <button
+              onClick={onOpenNewTicket}
+              className="flex items-center gap-1.5 px-3.5 py-1.5 bg-emerald-700 hover:bg-emerald-600 active:scale-95 text-white rounded-xl shadow-md text-xs font-bold transition-all -translate-y-1"
+            >
+              <Plus size={16} />
+              <span>تذكرة جديدة</span>
+            </button>
+          )}
+
+          {(currentUser.role === 'admin' || currentUser.role === 'staff') && (
+            <button
+              onClick={() => setActiveTab('admin_verifications')}
+              className={`flex flex-col items-center gap-1 py-1 px-3 rounded-xl transition-all relative ${
+                activeTab === 'admin_verifications'
+                  ? 'text-emerald-400 font-bold'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <UserCheck size={18} />
+              <span className="text-[10px]">توثيق الهويات</span>
+              {pendingVerificationsCount > 0 && (
+                <span className="absolute top-0 right-1 w-2 h-2 rounded-full bg-amber-500"></span>
+              )}
+            </button>
+          )}
+
+          <button
+            onClick={onOpenThemeModal}
+            className="flex flex-col items-center gap-1 py-1 px-3 rounded-xl text-slate-400 hover:text-slate-200 transition-all"
+          >
+            <Palette size={18} className="text-purple-400" />
+            <span className="text-[10px]">المظهر</span>
+          </button>
+        </div>
+      )}
     </header>
   );
 }

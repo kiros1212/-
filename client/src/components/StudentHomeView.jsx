@@ -30,59 +30,59 @@ export default function StudentHomeView({
   const resolvedCount = studentTickets.filter(t => t.status === 'resolved' || t.status === 'closed').length;
 
   return (
-    <div className="flex-1 overflow-y-auto bg-slate-950 p-4 sm:p-6 lg:p-8">
-      <div className="max-w-5xl mx-auto space-y-6">
+    <div className="flex-1 overflow-y-auto bg-slate-950 p-3 pb-24 sm:p-6 lg:p-8 sm:pb-8">
+      <div className="max-w-5xl mx-auto space-y-4 sm:space-y-6">
         
         {/* ================= 1. Official Academic Student Card ================= */}
-        <div className="rounded-2xl bg-slate-900 border border-slate-800 p-6 sm:p-7 shadow-sm">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="rounded-2xl bg-slate-900 border border-slate-800 p-4 sm:p-7 shadow-sm">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5 sm:gap-6">
             
-            <div className="flex items-start gap-4">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-emerald-800 border border-emerald-700/60 flex items-center justify-center shrink-0 shadow-inner">
-                <GraduationCap className="text-white" size={32} />
+            <div className="flex items-start gap-3 sm:gap-4 w-full md:w-auto">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-emerald-800 border border-emerald-700/60 flex items-center justify-center shrink-0 shadow-inner">
+                <GraduationCap className="text-white" size={26} />
               </div>
 
-              <div className="space-y-1.5">
+              <div className="space-y-1 sm:space-y-1.5 flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <span className="text-xs font-semibold text-emerald-400 bg-emerald-950/70 border border-emerald-800/60 px-2.5 py-0.5 rounded-md">
+                  <span className="text-[11px] sm:text-xs font-semibold text-emerald-400 bg-emerald-950/70 border border-emerald-800/60 px-2 py-0.5 rounded-md">
                     بوابة خدمة الطلبة الرسمية
                   </span>
-                  <span className="text-xs text-slate-400">
-                    جامعة الإمام الكاظم (ع) للعلوم الإسلامية الجامعة
+                  <span className="text-[11px] sm:text-xs text-slate-400">
+                    جامعة الإمام الكاظم (ع)
                   </span>
                 </div>
 
-                <h1 className="text-xl sm:text-2xl font-bold text-white tracking-normal">
+                <h1 className="text-lg sm:text-2xl font-bold text-white tracking-normal truncate">
                   أهلاً بك، {currentUser?.name || 'عزيزي الطالب'}
                 </h1>
 
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl">
-                  منصتك الرسمية للتواصل المباشر والآمن مع عمادة الكلية، معاونية شؤون الطلبة، ورؤساء الأقسام الأكاديمية لحل معاملاتك واستفساراتك بنظام التذاكر المباشرة.
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  منصتك الرسمية للتواصل المباشر مع عمادة الكلية وشؤون الطلبة ورؤساء الأقسام بنظام التذاكر المباشرة.
                 </p>
               </div>
             </div>
 
-            {/* Quick Student Academic Badges */}
-            <div className="w-full md:w-auto flex md:flex-col gap-2 pt-3 md:pt-0 border-t md:border-t-0 md:border-r border-slate-800 md:pr-6 shrink-0 text-xs">
-              <div className="bg-slate-800/70 border border-slate-700/60 rounded-lg px-3 py-1.5 text-right">
-                <span className="text-[10px] text-slate-400 block font-medium">رقم الهوية الجامعية:</span>
-                <span className="font-mono font-bold text-emerald-400">
+            {/* Quick Student Academic Badges - Responsive Grid without mobile overflow */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-col gap-2 w-full md:w-auto pt-3 md:pt-0 border-t md:border-t-0 md:border-r border-slate-800 md:pr-6 shrink-0 text-xs">
+              <div className="bg-slate-800/70 border border-slate-700/60 rounded-xl p-2.5 sm:px-3 sm:py-1.5 text-right col-span-1">
+                <span className="text-[10px] text-slate-400 block font-medium">رقم الهوية:</span>
+                <span className="font-mono font-bold text-emerald-400 text-xs sm:text-sm">
                   {currentUser?.studentIdNumber || '202410123'}
                 </span>
               </div>
 
-              <div className="bg-slate-800/70 border border-slate-700/60 rounded-lg px-3 py-1.5 text-right">
-                <span className="text-[10px] text-slate-400 block font-medium">القسم الأكاديمي:</span>
-                <span className="font-semibold text-slate-200 truncate block max-w-[170px]">
-                  {currentUser?.departmentName || 'قسم هندسة تقنيات الحاسوب'}
+              <div className="bg-slate-800/70 border border-slate-700/60 rounded-xl p-2.5 sm:px-3 sm:py-1.5 text-right col-span-1">
+                <span className="text-[10px] text-slate-400 block font-medium">حالة الحساب:</span>
+                <span className="font-semibold text-emerald-400 flex items-center gap-1 text-xs">
+                  <CheckCircle2 size={12} className="shrink-0" />
+                  <span>{currentUser?.verificationStatus === 'verified' ? 'موثق رسمياً' : 'قيد التدقيق'}</span>
                 </span>
               </div>
 
-              <div className="bg-slate-800/70 border border-slate-700/60 rounded-lg px-3 py-1.5 text-right">
-                <span className="text-[10px] text-slate-400 block font-medium">حالة الحساب:</span>
-                <span className="font-semibold text-emerald-400 flex items-center gap-1">
-                  <CheckCircle2 size={12} />
-                  {currentUser?.verificationStatus === 'verified' ? 'موثق رسمياً' : 'قيد التدقيق'}
+              <div className="bg-slate-800/70 border border-slate-700/60 rounded-xl p-2.5 sm:px-3 sm:py-1.5 text-right col-span-2 sm:col-span-1">
+                <span className="text-[10px] text-slate-400 block font-medium">القسم الأكاديمي:</span>
+                <span className="font-semibold text-slate-200 block truncate text-xs">
+                  {currentUser?.departmentName || 'قسم هندسة تقنيات الحاسوب'}
                 </span>
               </div>
             </div>
@@ -91,10 +91,10 @@ export default function StudentHomeView({
         </div>
 
         {/* ================= 2. Action Card: فتح تذكرة جديدة ================= */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
-          <div className="space-y-1 text-center sm:text-right">
-            <h3 className="text-base font-bold text-white flex items-center justify-center sm:justify-start gap-2">
-              <MessageSquare className="text-emerald-400" size={18} />
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+          <div className="space-y-1 text-center sm:text-right w-full sm:w-auto">
+            <h3 className="text-sm sm:text-base font-bold text-white flex items-center justify-center sm:justify-start gap-2">
+              <MessageSquare className="text-emerald-400 shrink-0" size={18} />
               <span>هل لديك استفسار أو معاملة أكاديمية؟</span>
             </h3>
             <p className="text-xs text-slate-300">
@@ -111,11 +111,11 @@ export default function StudentHomeView({
           </button>
         </div>
 
-        {/* ================= 3. Academic Service Categories (Replaced AI fluff with Real Student Services) ================= */}
+        {/* ================= 3. Academic Service Categories ================= */}
         <div className="space-y-3">
-          <div className="flex items-center justify-between pb-1">
-            <h2 className="text-sm font-bold text-slate-200 flex items-center gap-2">
-              <Building2 className="text-emerald-400" size={17} />
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-1">
+            <h2 className="text-sm sm:text-base font-bold text-slate-100 flex items-center gap-2">
+              <Building2 className="text-emerald-400 shrink-0" size={18} />
               <span>الخدمات والمعاملات الطلابية المتاحة</span>
             </h2>
             <span className="text-xs text-slate-400">
