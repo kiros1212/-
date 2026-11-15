@@ -275,7 +275,7 @@ export default function TicketChatRoom({
   const isClosed = ticket.status === 'resolved' || ticket.status === 'closed';
 
   return (
-    <div className="flex-1 flex flex-col h-[calc(100vh-4rem)] bg-slate-950 overflow-hidden">
+    <div className="flex-1 flex flex-col h-[calc(100dvh-4rem)] md:h-[calc(100vh-4rem)] bg-slate-950 overflow-hidden">
       
       {/* Ticket Room Header */}
       <div className="p-4 bg-slate-900 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm z-10">
@@ -517,7 +517,7 @@ export default function TicketChatRoom({
           </p>
         </div>
       ) : (
-        <form onSubmit={handleSendMessage} className="p-3 sm:p-4 bg-slate-900 border-t border-slate-800">
+        <form onSubmit={handleSendMessage} className="p-3 sm:p-4 bg-slate-900 border-t border-slate-800 shrink-0">
           {fileName && (
             <div className="mb-2 px-3 py-1.5 bg-slate-800 rounded-xl text-xs text-emerald-400 flex items-center justify-between border border-slate-700">
               <span className="truncate flex items-center gap-1">

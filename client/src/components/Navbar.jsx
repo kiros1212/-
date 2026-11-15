@@ -259,8 +259,8 @@ export default function Navbar({
         </div>
       </div>
 
-      {/* Mobile Bottom Navigation Bar for Smart Phones */}
-      {currentUser && (
+      {/* Mobile Bottom Navigation Bar for Smart Phones - Only shown outside tickets chat room */}
+      {currentUser && activeTab !== 'tickets' && (
         <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-900/95 backdrop-blur-md border-t border-slate-800 px-3 py-2 flex items-center justify-around shadow-2xl select-none">
           {currentUser.role === 'student' && (
             <button
