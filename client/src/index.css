@@ -1,0 +1,388 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #0f172a;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom Scrollbar for Chat & Ticket lists */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.4);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* ==========================================================================
+   THEME STYLES (ليل فضاء / نور صافي / أسود مخملي / ورق دافئ / الافتراضي)
+   ========================================================================== */
+
+/* 1. ليل فضاء (Space Night - البنفسجي الداكن الأصلي) */
+html[data-theme="space-night"],
+body[data-theme="space-night"] {
+  background-color: #0d0b1a !important;
+}
+
+html[data-theme="space-night"] .bg-slate-950 {
+  background-color: #0d0b1a !important;
+}
+
+html[data-theme="space-night"] .bg-slate-900 {
+  background-color: #14102b !important;
+}
+
+html[data-theme="space-night"] .bg-slate-800 {
+  background-color: #1d183d !important;
+}
+
+html[data-theme="space-night"] .bg-slate-800\/80,
+html[data-theme="space-night"] .bg-slate-800\/70,
+html[data-theme="space-night"] .bg-slate-800\/60,
+html[data-theme="space-night"] .bg-slate-800\/50,
+html[data-theme="space-night"] .bg-slate-800\/40 {
+  background-color: rgba(29, 24, 61, 0.75) !important;
+}
+
+html[data-theme="space-night"] .bg-slate-700 {
+  background-color: #2a2254 !important;
+}
+
+html[data-theme="space-night"] .border-slate-800 {
+  border-color: #2b2354 !important;
+}
+
+html[data-theme="space-night"] .border-slate-700 {
+  border-color: #3b3170 !important;
+}
+
+html[data-theme="space-night"] .border-slate-600 {
+  border-color: #4f4194 !important;
+}
+
+/* Primary Accents to Cosmic Purple */
+html[data-theme="space-night"] .bg-emerald-800 {
+  background-color: #6b21a8 !important;
+  border-color: #7e22ce !important;
+}
+
+html[data-theme="space-night"] .bg-emerald-700 {
+  background-color: #7e22ce !important;
+}
+
+html[data-theme="space-night"] .bg-emerald-600 {
+  background-color: #9333ea !important;
+}
+
+html[data-theme="space-night"] .text-emerald-400,
+html[data-theme="space-night"] .text-emerald-300 {
+  color: #c084fc !important;
+}
+
+html[data-theme="space-night"] .bg-emerald-950\/70,
+html[data-theme="space-night"] .bg-emerald-950\/80 {
+  background-color: rgba(59, 7, 100, 0.75) !important;
+  border-color: rgba(147, 51, 234, 0.45) !important;
+}
+
+html[data-theme="space-night"] ::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.35);
+}
+
+
+/* 2. نور صافي (Pure Light - أبيض هادئ وواضح) */
+html[data-theme="pure-light"],
+body[data-theme="pure-light"] {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+html[data-theme="pure-light"] .bg-slate-950 {
+  background-color: #f1f5f9 !important;
+}
+
+html[data-theme="pure-light"] .bg-slate-900 {
+  background-color: #ffffff !important;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.06);
+}
+
+html[data-theme="pure-light"] .bg-slate-800 {
+  background-color: #f8fafc !important;
+}
+
+html[data-theme="pure-light"] .bg-slate-800\/80,
+html[data-theme="pure-light"] .bg-slate-800\/70,
+html[data-theme="pure-light"] .bg-slate-800\/60,
+html[data-theme="pure-light"] .bg-slate-800\/50,
+html[data-theme="pure-light"] .bg-slate-800\/40 {
+  background-color: rgba(241, 245, 249, 0.85) !important;
+}
+
+html[data-theme="pure-light"] .bg-slate-700 {
+  background-color: #e2e8f0 !important;
+}
+
+html[data-theme="pure-light"] .border-slate-800 {
+  border-color: #e2e8f0 !important;
+}
+
+html[data-theme="pure-light"] .border-slate-700 {
+  border-color: #cbd5e1 !important;
+}
+
+html[data-theme="pure-light"] .border-slate-600 {
+  border-color: #94a3b8 !important;
+}
+
+/* Light text conversion */
+html[data-theme="pure-light"] .text-white,
+html[data-theme="pure-light"] .text-slate-100,
+html[data-theme="pure-light"] .text-slate-200 {
+  color: #0f172a !important;
+}
+
+html[data-theme="pure-light"] .text-slate-300 {
+  color: #334155 !important;
+}
+
+html[data-theme="pure-light"] .text-slate-400 {
+  color: #64748b !important;
+}
+
+html[data-theme="pure-light"] .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+/* Ensure buttons keep readable white text */
+html[data-theme="pure-light"] .bg-emerald-700,
+html[data-theme="pure-light"] .bg-emerald-800,
+html[data-theme="pure-light"] .bg-emerald-600,
+html[data-theme="pure-light"] .bg-purple-600,
+html[data-theme="pure-light"] .bg-rose-600 {
+  color: #ffffff !important;
+}
+
+html[data-theme="pure-light"] .bg-emerald-700 *,
+html[data-theme="pure-light"] .bg-emerald-800 *,
+html[data-theme="pure-light"] .bg-emerald-600 *,
+html[data-theme="pure-light"] .bg-purple-600 *,
+html[data-theme="pure-light"] .bg-rose-600 * {
+  color: #ffffff !important;
+}
+
+html[data-theme="pure-light"] .bg-emerald-950\/70,
+html[data-theme="pure-light"] .bg-emerald-950\/80 {
+  background-color: #d1fae5 !important;
+  border-color: #a7f3d0 !important;
+}
+
+html[data-theme="pure-light"] .text-emerald-400,
+html[data-theme="pure-light"] .text-emerald-300 {
+  color: #047857 !important;
+}
+
+html[data-theme="pure-light"] input,
+html[data-theme="pure-light"] textarea,
+html[data-theme="pure-light"] select {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html[data-theme="pure-light"] ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+html[data-theme="pure-light"] ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+
+
+/* 3. أسود مخملي (Velvet Black - أسود أخف وأقل زرقة / OLED Charcoal) */
+html[data-theme="velvet-black"],
+body[data-theme="velvet-black"] {
+  background-color: #09090b !important;
+}
+
+html[data-theme="velvet-black"] .bg-slate-950 {
+  background-color: #09090b !important;
+}
+
+html[data-theme="velvet-black"] .bg-slate-900 {
+  background-color: #121215 !important;
+}
+
+html[data-theme="velvet-black"] .bg-slate-800 {
+  background-color: #1b1b20 !important;
+}
+
+html[data-theme="velvet-black"] .bg-slate-800\/80,
+html[data-theme="velvet-black"] .bg-slate-800\/70,
+html[data-theme="velvet-black"] .bg-slate-800\/60,
+html[data-theme="velvet-black"] .bg-slate-800\/50,
+html[data-theme="velvet-black"] .bg-slate-800\/40 {
+  background-color: rgba(27, 27, 32, 0.8) !important;
+}
+
+html[data-theme="velvet-black"] .bg-slate-700 {
+  background-color: #27272c !important;
+}
+
+html[data-theme="velvet-black"] .border-slate-800 {
+  border-color: #232328 !important;
+}
+
+html[data-theme="velvet-black"] .border-slate-700 {
+  border-color: #2e2e36 !important;
+}
+
+html[data-theme="velvet-black"] .border-slate-600 {
+  border-color: #3e3e48 !important;
+}
+
+html[data-theme="velvet-black"] .text-slate-400 {
+  color: #a1a1aa !important;
+}
+
+html[data-theme="velvet-black"] .text-slate-300 {
+  color: #d4d4d8 !important;
+}
+
+html[data-theme="velvet-black"] ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+
+/* 4. ورق دافئ (Warm Paper - بيج مريح للعين) */
+html[data-theme="warm-paper"],
+body[data-theme="warm-paper"] {
+  background-color: #f5f0e6 !important;
+  color: #2c241c !important;
+}
+
+html[data-theme="warm-paper"] .bg-slate-950 {
+  background-color: #ede6d8 !important;
+}
+
+html[data-theme="warm-paper"] .bg-slate-900 {
+  background-color: #fbf9f4 !important;
+  box-shadow: 0 1px 4px 0 rgba(44, 36, 28, 0.06);
+}
+
+html[data-theme="warm-paper"] .bg-slate-800 {
+  background-color: #f2ebe0 !important;
+}
+
+html[data-theme="warm-paper"] .bg-slate-800\/80,
+html[data-theme="warm-paper"] .bg-slate-800\/70,
+html[data-theme="warm-paper"] .bg-slate-800\/60,
+html[data-theme="warm-paper"] .bg-slate-800\/50,
+html[data-theme="warm-paper"] .bg-slate-800\/40 {
+  background-color: rgba(242, 235, 224, 0.85) !important;
+}
+
+html[data-theme="warm-paper"] .bg-slate-700 {
+  background-color: #e4dac7 !important;
+}
+
+html[data-theme="warm-paper"] .border-slate-800 {
+  border-color: #ded5c2 !important;
+}
+
+html[data-theme="warm-paper"] .border-slate-700 {
+  border-color: #ccbfab !important;
+}
+
+html[data-theme="warm-paper"] .border-slate-600 {
+  border-color: #baa993 !important;
+}
+
+/* Warm text tones */
+html[data-theme="warm-paper"] .text-white,
+html[data-theme="warm-paper"] .text-slate-100,
+html[data-theme="warm-paper"] .text-slate-200 {
+  color: #2c241c !important;
+}
+
+html[data-theme="warm-paper"] .text-slate-300 {
+  color: #4d4034 !important;
+}
+
+html[data-theme="warm-paper"] .text-slate-400 {
+  color: #786b5e !important;
+}
+
+html[data-theme="warm-paper"] .text-slate-500 {
+  color: #9c8c7c !important;
+}
+
+/* Warm terracotta accents */
+html[data-theme="warm-paper"] .bg-emerald-800 {
+  background-color: #92400e !important;
+}
+
+html[data-theme="warm-paper"] .bg-emerald-700 {
+  background-color: #b45309 !important;
+}
+
+html[data-theme="warm-paper"] .bg-emerald-600 {
+  background-color: #d97706 !important;
+}
+
+html[data-theme="warm-paper"] .bg-emerald-700,
+html[data-theme="warm-paper"] .bg-emerald-800,
+html[data-theme="warm-paper"] .bg-emerald-600 {
+  color: #ffffff !important;
+}
+
+html[data-theme="warm-paper"] .bg-emerald-700 *,
+html[data-theme="warm-paper"] .bg-emerald-800 *,
+html[data-theme="warm-paper"] .bg-emerald-600 * {
+  color: #ffffff !important;
+}
+
+html[data-theme="warm-paper"] .text-emerald-400,
+html[data-theme="warm-paper"] .text-emerald-300 {
+  color: #92400e !important;
+}
+
+html[data-theme="warm-paper"] .bg-emerald-950\/70,
+html[data-theme="warm-paper"] .bg-emerald-950\/80 {
+  background-color: #fef3c7 !important;
+  border-color: #fde68a !important;
+}
+
+html[data-theme="warm-paper"] input,
+html[data-theme="warm-paper"] textarea,
+html[data-theme="warm-paper"] select {
+  background-color: #ffffff !important;
+  color: #2c241c !important;
+  border-color: #ccbfab !important;
+}
+
+html[data-theme="warm-paper"] ::-webkit-scrollbar-track {
+  background: #ede6d8;
+}
+
+html[data-theme="warm-paper"] ::-webkit-scrollbar-thumb {
+  background: #ccbfab;
+}

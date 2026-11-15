@@ -1,0 +1,65 @@
+[
+  {
+    "id": "dep-cs",
+    "name": "قسم هندسة تقنيات الحاسوب",
+    "type": "academic",
+    "description": "استفسارات المناهج والمشاريع والامتحانات وجداول المختبرات",
+    "headOfDepartment": "د. سارة الكاظمي"
+  },
+  {
+    "id": "dep-law",
+    "name": "قسم القانون",
+    "type": "academic",
+    "description": "استفسارات المواد القانونية والتدريب الصيفي والمحكمة الافتراضية",
+    "headOfDepartment": "د. حسين الموسوي"
+  },
+  {
+    "id": "dep-finance",
+    "name": "قسم العلوم المالية والمصرفية",
+    "type": "academic",
+    "description": "استفسارات الخطة الدراسية والتدقيق المالي",
+    "headOfDepartment": "د. عمار الخفاجي"
+  },
+  {
+    "id": "dep-english",
+    "name": "قسم اللغة الإنجليزية وآدابها",
+    "type": "academic",
+    "description": "استفسارات الترجمة والصوتيات والأدب الإنجليزي",
+    "headOfDepartment": "د. زينب البغدادي"
+  },
+  {
+    "id": "dep-media",
+    "name": "قسم الإعلام والصحافة",
+    "type": "academic",
+    "description": "استفسارات استوديو التدريب والإعلام الرقمي والصحافة",
+    "headOfDepartment": "د. مصطفى العبيدي"
+  },
+  {
+    "id": "admin-student-affairs",
+    "name": "معاونية شؤون الطلبة",
+    "type": "administration",
+    "description": "حل مشاكل الطلبة، الاستضافات، الأقسام الداخلية، والهويات",
+    "headOfDepartment": "د. حيدر الشمري (معاون العميد لشؤون الطلبة)"
+  },
+  {
+    "id": "admin-scientific",
+    "name": "المعاونية العلمية والدراسات العليا",
+    "type": "administration",
+    "description": "الترقيات العلمية، البحوث، وشؤون الامتحانات المركزية",
+    "headOfDepartment": "د. علي الربيعي (المعاون العلمي)"
+  },
+  {
+    "id": "admin-registration",
+    "name": "شعبة التسجيل والوثائق",
+    "type": "administration",
+    "description": "إصدار الوثائق، تأييدات الاستمرار، وتثبيت الدرجات",
+    "headOfDepartment": "أ. حسام الدين الكرخي"
+  },
+  {
+    "id": "admin-finance-bureau",
+    "name": "شعبة الحسابات والأقساط",
+    "type": "administration",
+    "description": "وصولات الدفع، الأقساط الدراسية، وبراءات الذمة",
+    "headOfDepartment": "أ. مريم السعدي"
+  }
+]

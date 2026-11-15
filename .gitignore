@@ -1,0 +1,12 @@
+# Dependencies (ضخمة جداً ولا ترفع لـ GitHub)
+node_modules/
+client/node_modules/
+
+# Logs & Environment
+*.log
+.env
+.env.local
+
+# OS Files
+.DS_Store
+Thumbs.db
